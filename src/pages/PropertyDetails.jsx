@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { deleteProperty } from "../api/properties";
+import { useNavigate } from "react-router-dom";
 import {
   HiOutlineOfficeBuilding,
   HiOutlineViewGrid,
@@ -10,6 +12,7 @@ import { MdBed, MdBathtub } from "react-icons/md";
 
 export default function PropertyDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -108,9 +111,26 @@ export default function PropertyDetails() {
             </div>
           </div>
 
-          {/* CONTACT BUTTON */}
-          <button className="mt-8 bg-linear-to-r from-cyan-500 to-blue-600 text-white py-3 px-6 rounded-xl font-semibold shadow-md hover:from-blue-600 hover:to-cyan-500 transition-all duration-300">
-            Contact Agent
+          {/* DELETE BUTTON */}
+          <button
+            onClick={async () => {
+              const confirmDelete = window.confirm(
+                "Are you sure you want to delete this property?"
+              );
+              if (!confirmDelete) return;
+
+              try {
+                await deleteProperty(id);
+                alert("Property deleted successfully!");
+                navigate("/");
+              } catch (err) {
+                console.error("Error deleting:", err);
+                alert("Failed to delete property.");
+              }
+            }}
+            className="mt-4 bg-red-600 text-white py-3 px-6 rounded-xl font-semibold shadow-md hover:bg-red-700 transition-all duration-300"
+          >
+            Delete Property
           </button>
         </div>
       </div>

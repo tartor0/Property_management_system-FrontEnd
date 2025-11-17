@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
 import Home from "./pages/Home";
 import PropertyCard from "./components/PropertyCard";
 import PropertyDetails from "./pages/PropertyDetails";
+import AddProperty from "./components/AddProperty";
 import './App.css';
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/properties" element={<PropertyCard />} />
             <Route path="/properties/:id" element={<PropertyDetails />} />
+            <Route path="/add-property" element={<AddProperty />} />
           </Routes>
         </main>
         <Footer />

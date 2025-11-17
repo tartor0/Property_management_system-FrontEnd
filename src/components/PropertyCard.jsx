@@ -17,8 +17,12 @@ export default function PropertyCard({ property }) {
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />
         <span
-          className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold
-          bg-linear-to-r from-green-400 to-cyan-500 text-white shadow-md"
+          className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold shadow-md
+    ${property.status === "AVAILABLE" ? "bg-linear-to-r from-green-500 to-cyan-500" : ""}
+    ${property.status === "SOLD" ? "bg-red-500" : ""}
+    ${property.status === "PENDING" ? "bg-yellow-500" : ""}
+    text-white
+  `}
         >
           {property.status}
         </span>
