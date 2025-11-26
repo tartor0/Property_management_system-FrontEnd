@@ -14,7 +14,7 @@ export default function Home() {
     const fetchProps = async () => {
       try {
         const data = await getAllProperties();
-        setProperties(data.slice(0, 9));
+        setProperties(data);
       } catch (error) {
         console.error("Error fetching properties:", error);
       } finally {
@@ -75,8 +75,8 @@ export default function Home() {
               className="w-full px-10 py-3 rounded-xl shadow-sm bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg"
             >
               <option value="ALL">All Properties</option>
-              <option value="AVAILABLE">Available</option>
-              <option value="SOLD">Sold</option>
+              <option value="Available">Available</option>
+              <option value="Sold">Sold</option>
             </select>
           </div>
         </div>

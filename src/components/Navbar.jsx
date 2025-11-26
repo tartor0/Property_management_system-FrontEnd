@@ -76,7 +76,7 @@ export default function Navbar() {
             About
           </a>
           <a
-            href="/contact"
+            href="#"
             className="block text-center bg-cyan-500 py-2 rounded-xl hover:scale-105 transition-transform"
           >
             Contact Us
